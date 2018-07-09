@@ -5,6 +5,7 @@ const HelloModel = mongoose.model('Item', HelloSchema);
 const connectionString = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}`;
 
 function createHello(properties, callback) {
+  // use properties for your new instance
   mongoose.connect(connectionString).then(
     () => {
       const newHello = new HelloModel({
