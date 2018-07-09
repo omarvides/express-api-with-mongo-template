@@ -7,7 +7,7 @@ This is a template to generate Express RESTful APIs that use mongo db. It uses i
 1. Install ironman https://github.com/ironman-project/ironman#install
 1. Install this generator
 ```
-ironman install https://github.com/omarvides/express-api-with-mongo-template
+ironman install https://github.com/omarvides/express-api-with-mongo-template.git
 ```
 
 ## Using it
