@@ -1,0 +1,4 @@
+id: express-api
+version: 1.0.0
+name: Express API with mongo
+description: A Express API with mongo template
