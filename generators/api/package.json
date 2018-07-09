@@ -1,0 +1,25 @@
+{
+  "name": "rest-express-mongo",
+  "version": "{{.Values.version | default \"1.0.0\"}}",
+  "description": "{{.Values.description}}",
+  "main": "index.js",
+  "author": "{{.Values.author}}",
+  "license": "{{.Values.license | default \"MIT\"}}",
+  "scripts": {
+    "start": "node ./server/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.2",
+    "winston": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.9.1"
+  }
+}
