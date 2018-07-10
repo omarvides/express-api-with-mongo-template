@@ -7,7 +7,7 @@
   "license": "{{.Values.license | default "MIT"}}",
   "scripts": {
     "start": "node ./server/index.js",
-    "test": "node_modules/mocha/bin/mocha --exit --recursive ./specs"
+    "test": "node_modules/mocha/bin/mocha --exit --recursive ./api/tests"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
