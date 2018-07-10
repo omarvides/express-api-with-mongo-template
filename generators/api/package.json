@@ -1,9 +1,9 @@
 {
-  "name": "rest-express-mongo",
+  "name": "{{.Values.version | default "rest-express-mongo"}}",
   "version": "{{.Values.version | default "1.0.0"}}",
-  "description": "{{.Values.description}}",
+  "description": "{{.Values.description | default ""}}",
   "main": "index.js",
-  "author": "{{.Values.author}}",
+  "author": "{{.Values.author| default ""}}",
   "license": "{{.Values.license | default "MIT"}}",
   "scripts": {
     "start": "node ./server/index.js"
