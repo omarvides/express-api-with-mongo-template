@@ -6,7 +6,8 @@
   "author": "{{.Values.author| default ""}}",
   "license": "{{.Values.license | default "MIT"}}",
   "scripts": {
-    "start": "node ./server/index.js"
+    "start": "node ./server/index.js",
+    "test": "node_modules/mocha/bin/mocha --exit --recursive ./specs"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
