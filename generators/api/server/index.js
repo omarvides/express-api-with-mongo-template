@@ -1,16 +1,19 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const controllers = require('../controllers/hello-controllers');
+const models = require('../models');
+const controllers = require('../controllers/controllers');
+const routes = require('../routes/routes');
 const logger = require('../utilities/logger');
 
 
 const app = express();
+const configuredControllers = controllers.configure(models);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set('port', process.env.NODE_PORT || 3000);
 
-app.get('/hello', controllers.helloController);
+routes(app, configuredControllers);
 
 app.listen(app.get('port'), () => {
   logger.info(`API running on port ${app.get('port')}`);

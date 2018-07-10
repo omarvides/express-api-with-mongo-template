@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
-const HelloSchema = require('./hello-model-schema');
+const Schema = require('./model-schema');
 
-const HelloModel = mongoose.model('Item', HelloSchema);
+const Model = mongoose.model('Sample', Schema);
 const connectionString = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_HOST}:${process.env.DB_PORT}`;
 
-function createHello(properties, callback) {
+function create(properties, callback) {
   // use properties for your new instance
   mongoose.connect(connectionString).then(
     () => {
-      const newHello = new HelloModel({
-        mystring: 'Hello',
+      const newEntry = new Model({
+        mystring: 'New Entry',
         mynumber: 1,
       });
-      newHello.save().then(
+      newEntry.save().then(
         (docs) => {
           mongoose.connection.close();
           return callback(null, docs);
@@ -27,10 +27,10 @@ function createHello(properties, callback) {
   );
 }
 
-function getHello(properties, callback) {
+function get(properties, callback) {
   mongoose.connect(connectionString).then(
     () => {
-      HelloModel.find({}, (err, results) => {
+      Model.find({}, (err, results) => {
         if (err) {
           return callback(err);
         }
@@ -42,4 +42,4 @@ function getHello(properties, callback) {
 }
 
 
-module.exports = { createHello, getHello };
+module.exports = { create, get };
