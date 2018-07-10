@@ -1,5 +1,5 @@
 {
-  "name": "{{.Values.version | default "rest-express-mongo"}}",
+  "name": "{{.Values.api_name | default "rest-express-mongo"}}",
   "version": "{{.Values.version | default "1.0.0"}}",
   "description": "{{.Values.description | default ""}}",
   "main": "index.js",
