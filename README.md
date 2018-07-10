@@ -21,21 +21,21 @@ projectName: Some Project Name
 projectDescription: Some project Descript
 ```
 
-### This repository expected variables, to write your own instance of the file above, you can copy and paste the following snippet
+### This repository expected variables, to write your own instance of the file above, you can copy following snippet, write it down in a yaml file and modify it to meet your needs.
 
 ```variables.yaml```
 
 ``` yaml
-version:
-description:
-author:
-license:
-api_name:
-dbhost:
-dbuser:
-dbpassword:
-dbport:
-nodeport:
+version: 1.0.0
+description: "This api is useful"
+author: "User Name <username@mail.com>"
+license: "MIT"
+api_name: "example-api"
+dbhost: "localhost"
+dbuser: "root"
+dbpassword: "root"
+dbport: "27017"
+nodeport: "4000"
 ```
 
 #### Variables reference
