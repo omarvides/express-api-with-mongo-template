@@ -12,5 +12,5 @@ ironman install https://github.com/omarvides/express-api-with-mongo-template.git
 
 ## Using it
 ```
-TODO
+ironman generate express-api:api your-api-name
 ```
