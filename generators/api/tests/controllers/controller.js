@@ -1,5 +1,5 @@
 const chai = require('chai');
-const controllers = require('../controllers/controllers');
+const controllers = require('../../controllers/controllers');
 
 const expect = chai.expect;
 
