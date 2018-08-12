@@ -102,4 +102,20 @@ DB_PORT=27017
 yarn start
 ```
 
+## Builds
+
+This generator creates repositories with a .drone.yml file, with the content 
+
+```yml
+
+pipeline:
+  backend:
+    image: node
+    commands:
+      - npm install
+      - npm test
+```
+
+If you are tracking this repository with a drone CI server, it will automatically start building the first time you push your code, and will have buils for any commit at any branch you create, you can also add your favorite CI tool configuration files.
+
 Start coding :)
