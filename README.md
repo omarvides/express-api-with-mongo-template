@@ -104,18 +104,36 @@ yarn start
 
 ## Builds
 
-This generator creates repositories with a .drone.yml file, with the content 
+This generator creates repositories with a .drone.yml file.
+
+If you are tracking this repository with a drone CI server, it will automatically start building the first time you push your code, and will have buils for any commit at any branch you create, you can also add your favorite CI tool configuration files.
+
+```.drone.yml file content:```
 
 ```yml
 
 pipeline:
   backend:
     image: node
+    environment:
+      - DB_HOST=database
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_PORT=27017
     commands:
+      - sleep 15
       - npm install
       - npm test
+      - npm run integration
+services:
+  database:
+    image: mongo:3
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
 ```
 
-If you are tracking this repository with a drone CI server, it will automatically start building the first time you push your code, and will have buils for any commit at any branch you create, you can also add your favorite CI tool configuration files.
+The .drone.yml file contains a service configuration to provide a docker container with a mongo database version 3 and sets some environment variables to guarantee that your api integration specs will be able to find and connect to the database.
+
 
 Start coding :)
