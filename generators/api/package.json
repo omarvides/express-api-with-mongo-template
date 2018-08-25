@@ -7,7 +7,8 @@
   "license": "{{.Values.license | default "MIT"}}",
   "scripts": {
     "start": "node ./server/index.js",
-    "test": "node_modules/mocha/bin/mocha --exit --recursive ./tests"
+    "test": "node_modules/mocha/bin/mocha --exit --recursive ./tests",
+    "integration": "node_modules/mocha/bin/mocha --exit --recursive ./tests/integration"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -24,6 +25,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.9.1",
     "mocha": "^5.2.0",
-    "sinon": "^6.1.3"
+    "sinon": "^6.1.3",
+    "supertest": "^3.1.0"
   }
 }
