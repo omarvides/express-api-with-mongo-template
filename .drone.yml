@@ -1,0 +1,5 @@
+pipeline:
+  backend:
+    image: omarvides/docker-ironman-spec
+    commands:
+      ironman version
