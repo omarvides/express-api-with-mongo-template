@@ -2,4 +2,6 @@ pipeline:
   backend:
     image: omarvides/docker-ironman-spec
     commands:
-      ironman version
+      - ironman version
+      - ironman install https://github.com/omarvides/express-api-with-mongo-template.git
+      - ironman generate express-api:api /tmp/sample-api
