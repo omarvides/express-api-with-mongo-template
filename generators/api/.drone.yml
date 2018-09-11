@@ -18,7 +18,7 @@ pipeline:
       auto_tag: true
       secrets: [docker_username, docker_password]
       when:
-        event: [ tag ]%
+        event: [ tag ]
 services:
   database:
     image: mongo:3
