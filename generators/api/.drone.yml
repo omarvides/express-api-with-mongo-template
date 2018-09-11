@@ -11,6 +11,14 @@ pipeline:
       - npm install
       - npm test
       - npm run integration
+    docker_publish:
+      image: plugins/docker:17.12
+      repo: {{.Values.docker_user | default "docker_user"}}/{{.Values.docker_image | default "docker_image"}}
+      dockerfile: docker/Dockerfile
+      auto_tag: true
+      secrets: [docker_username, docker_password]
+      when:
+        event: [ tag ]%
 services:
   database:
     image: mongo:3

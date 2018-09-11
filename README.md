@@ -40,19 +40,20 @@ nodeport: "4000"
 
 #### Variables reference
 
-| Variable    | Description                                                                               | Default value      |
-|-------------|-------------------------------------------------------------------------------------------|--------------------|
-| version     | The current API version something like 1.0.0 this will be written a the package.json file | 1.0.0              |
-| description | A brief description of the API, this will be added to the package.json file               |                    |
-| author      | Name and email of the API author, will be added to package.json                           |                    |
-| license     | License to be written at the package.json for the app (MIT, GPL, etc)                     | MIT                |
-| api_name    | The api name, must be a string separated with dashes (lower kebab case)                   | rest-express-mongo |
-| dbhost      | The host for the mongo database (example: localhost)                                      |                    |
-| dbuser      | The user of the mongo database (example: root)                                            |                    |
-| dbpassword  | The password of the mongo database (example: root)                                        |                    |
-| dbport      | The port of the mongo database (example: 27017)                                           |                    |
-| nodeport    | The port which the API will use to listen to requests                                     | 3000               |
-|             |                                                                                           |                    |
+| Variable     | Description                                                                                | Default value      |
+|--------------|--------------------------------------------------------------------------------------------|--------------------|
+| version      | The current API version something like 1.0.0 this will be written a the package.json file | 1.0.0              |
+| description  | A brief description of the API, this will be added to the package.json file               |                    |
+| author       | Name and email of the API author, will be added to package.json                           |                    |
+| license      | License to be written at the package.json for the app (MIT, GPL, etc)                     | MIT                |
+| api_name     | The api name, must be a string separated with dashes (lower kebab case)                   | rest-express-mongo |
+| dbhost       | The host for the mongo database (example: localhost)                                      |                    |
+| dbuser       | The user of the mongo database (example: root)                                            |                    |
+| dbpassword   | The password of the mongo database (example: root)                                        |                    |
+| dbport       | The port of the mongo database (example: 27017)                                           |                    |
+| nodeport     | The port which the API will use to listen to requests                                     | 3000               |
+| docker_user  | The usarname on dockerhub or the docker registry to use                                   | docker_user        |
+| docker_image | The image of the docker image to publish to                                               | docker_image       |
 
 ## Using it
 
@@ -125,6 +126,14 @@ pipeline:
       - npm install
       - npm test
       - npm run integration
+    docker_publish:
+      image: plugins/docker:17.12
+      repo: docker_user/docker_image
+      dockerfile: docker/Dockerfile
+      auto_tag: true
+      secrets: [docker_username, docker_password]
+      when:
+        event: [ tag ]
 services:
   database:
     image: mongo:3
@@ -134,6 +143,12 @@ services:
 ```
 
 The .drone.yml file contains a service configuration to provide a docker container with a mongo database version 3 and sets some environment variables to guarantee that your api integration specs will be able to find and connect to the database.
+
+This version of the .drone.yml file will also publish to a docker registry the application on a docker container, by default it will publish the
+image when the repository is tagged, with the version of the tag, if the repository is tagged with ```1.0.0``` it will create the tags
+```1.0``` and ```1``` and push them to the docker registry being used, by default dockerhub, when the repository is merged to master from a branch
+the pipeline will create the ```latest``` tag and push it to the registry.
+
 
 
 Start coding :)
