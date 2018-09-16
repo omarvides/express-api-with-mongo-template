@@ -1,6 +1,6 @@
 const chai = require('chai');
 const sinon = require('sinon');
-const routes = require('../../routes/routes');
+const routes = require('../../../routes/routes');
 
 const  expect  = chai.expect;
 
