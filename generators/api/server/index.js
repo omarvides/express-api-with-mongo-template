@@ -18,3 +18,5 @@ routes(app, configuredControllers);
 app.listen(app.get('port'), () => {
   logger.info(`API running on port ${app.get('port')}`);
 });
+
+module.exports = app;
