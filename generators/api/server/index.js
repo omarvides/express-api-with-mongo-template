@@ -11,7 +11,7 @@ const app = express();
 const configuredControllers = controllers.configure(models);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.set('port', process.env.NODE_PORT || 3000);
+app.set('port', process.env.PORT || 3000);
 
 routes(app, configuredControllers);
 
